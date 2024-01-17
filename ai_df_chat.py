@@ -9,7 +9,8 @@ from langchain.chat_models import ChatOpenAI
 
 st.subheader('Chat with CSV data using OpenAI ChatGPT')
 
-api_key = "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"
+api_key = st.text_input('OpenAI API Key', type='password')
+
 #os.environ['OPENAI_API_KEY'] = api_key
     # file uploader widget
 uploaded_file = st.sidebar.file_uploader('Upload a dataframe in csv:', type='csv', accept_multiple_files=False)
@@ -42,7 +43,13 @@ if submit_q:
 st.divider()
 if uploaded_file is not None:
     st.write('Data Preview')
-    st.dataframe(df.head(10))
+    st.write(f"Total Rows: {len(df)}")
+    st.dataframe(
+        pd.DataFrame(df.dtypes, columns=['type']) \
+            .rename_axis('column name') \
+            .reset_index(), 
+        hide_index=True)
+    st.dataframe(df.head(10), hide_index=True)
 
 # run the app: streamlit run ./df_doc_chat.py
 
