@@ -1,0 +1,7 @@
+openai
+langchain
+streamlit
+tabulate
+datetime
+numpy
+pandas
