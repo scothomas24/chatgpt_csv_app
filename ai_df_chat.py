@@ -2,7 +2,6 @@ import streamlit as st
 import tabulate
 import pandas as pd
 import datetime
-import matplotlib
 import numpy as np
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 from langchain.llms import OpenAI
